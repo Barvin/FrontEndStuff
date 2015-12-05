@@ -1,0 +1,52 @@
+
+
+<script type=text/javascript>
+    var lo = 1;
+    var hi = 100;
+    var randomNr;
+    function Restart(){
+        randomNr = Math.floor(Math.random()*hi)+lo;
+        document.getElementById("announce").innerHTML="OK, I am thinking of a number between " + lo + " and " + hi
+        document.getElementById("instr").innerHTML="Enter your guess between " + lo + " and " + hi + "  "
+    }
+    function Guess()
+    {
+        var yourGuess = document.getElementById('myGuess').value;
+        if (yourGuess>randomNr)
+            document.getElementById("announce").textContent="Too High!"
+        if (yourGuess<randomNr)
+            document.getElementById("announce").textContent="Too Low!"
+        if (yourGuess==randomNr){
+            document.getElementById("announce").textContent="Well done!"
+        }
+    }
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+
+    <body class="container-fluid">
+        <h3 id = "announce"></h3>
+        <div class="form-inline" role="form" id="gameInfo">
+            <label for="myGuess" id="instr"></label>
+            <input type=text class="form-control" id='myGuess' name='myGuess' value="">
+
+            <input type='button' class="btn btn-success" onClick='Guess()' value='Guess'>
+            <br>
+            <br>
+            <input type='button' class="btn btn-info" onClick='Restart()' value='Start Again'>
+        </div>
+
+        <script type=text/javascript>
+            Restart();
+        </script>
+    </body>
+<html>
